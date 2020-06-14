@@ -1,4 +1,6 @@
-//alert("Paramedic Quiz: Wrong Answers take time away. blah")
+// var sheet = document.createElement('style')
+// sheet.innerHTML = ".button{background-color:green; padding 15px 32px; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 4px; cursor: pointer;"
+// }
 
 main()
 
@@ -16,7 +18,7 @@ function main() {
     `;
 }
 
-var timeLeft = 60
+var timeLeft = 20
 
 var pageElement = document.querySelector("#wrapper")
 

@@ -1,3 +1,6 @@
-.headtimer {
-    justify-content: end;
+.EMS {
+    background-image: url("../Assets/EMSLogo.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
 }
