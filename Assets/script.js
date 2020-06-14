@@ -11,92 +11,102 @@ function main() {
     </header>
     <h1>Paramedic Quiz</h1>
     <h2>Try the following questions to review your paramedic knowledge...</h2>
+    <h3>Answering the question right adds time-- Get it wrong and time is subtracted...</h3>
     <button onclick="startGame();" id="startButton">Start</button>
     `;
 }
 
-var timeLeft = 100
+var timeLeft = 60
+
+var pageElement = document.querySelector("#wrapper")
 
 function renderQuestion(index) {
 
-    var pageElement = document.querySelector("#wrapper")
-    pageElement.innerHTML = "<header><a href=\"./assests/ViewHighScore.html\">View High Scores</a> \
-    <p id=\"timertext\"></p></header> \
+
+    pageElement.innerHTML = "<header><a href=\"./assests/ViewHighScore.html\">View High Scores</a></header>\
     <h1 id=\"questionText\">" + questions[index].question + "</h1>\
     <button id=\"AnswerA\">" + questions[index].choiceA + "</button><br> \
     <button id=\"AnswerB\">" + questions[index].choiceB + "</button><br> \
     <button id=\"AnswerC\">" + questions[index].choiceC + "</button><br> \
     <button id=\"AnswerD\">" + questions[index].choiceD + "</button>";
 
-    var timerEl = document.querySelector("#timertext");
 
-    var timerInterval = setInterval(function() {
-        timerEl.textContent = timeLeft + " seconds remaining";
-        timeLeft--;
-
-        if (timeLeft === 0) {
-            clearInterval(timeLeft);
-
-        }
-    }, 1000);
 
     var chooseAEl = document.querySelector("#AnswerA");
     chooseAEl.addEventListener("click", function() {
-        // console.log(questions[index].choiceA)
         selectedAnswer = "A"
         console.log(selectedAnswer)
         if (questions[index].correct == "A") {
-            //add to timer
+            timeLeft++
             renderQuestion(index + 1)
         } else {
-            //subract from timer
+            timeLeft--
+            renderQuestion(index + 1)
 
         }
     })
     var chooseBEl = document.querySelector("#AnswerB");
     chooseBEl.addEventListener("click", function() {
-        // console.log(questions[index].choiceB)
         selectedAnswer = "B"
         console.log(selectedAnswer)
         if (questions[index].correct == "B") {
-            //add to timer
+            timeLeft++
             renderQuestion(index + 1)
         } else {
-            //subract from timer
+            timeLeft--
+            renderQuestion(index + 1)
+
         }
     })
     var chooseCEl = document.querySelector("#AnswerC");
     chooseCEl.addEventListener("click", function() {
-        // console.log(questions[index].choiceC)
         selectedAnswer = "C"
         console.log(selectedAnswer)
         if (questions[index].correct == "C") {
-            //add to timer
+            timeLeft++
             renderQuestion(index + 1)
         } else {
-            //subtract from timer
+            timeLeft--
+            renderQuestion(index + 1)
+
         }
     })
     var chooseDEl = document.querySelector("#AnswerD");
     chooseDEl.addEventListener("click", function() {
-        // console.log(questions[index].choiceD)
         selectedAnswer = "D"
         console.log(selectedAnswer)
         if (questions[index].correct == "D") {
-            //add to timer
+            timeLeft++
             renderQuestion(index + 1)
         } else {
-            //subract from timer
+            timeLeft--
+            renderQuestion(index + 1)
+
         }
     })
+
 }
 
 function startGame() {
     var currentindex = 0
-    var selectedAnswer = ""
-        //setTimeout(renderQuestions(), timerLength);
-        // console.log("Starting Game...")
+        // var selectedAnswer = ""
+        // if there are no more questions- display you got ___ out of questions.length right... 
+
+    var timerEl = document.querySelector("#timertext");
+
+    var timerInterval = setInterval(function() {
+        timeLeft--;
+        timerEl.textContent = timeLeft + " seconds remaining";
+
+        if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            pageElement.innerHTML = "<header><a href=\"./assests/ViewHighScore.html\">View High Scores</a></header>"
+            return
+
+        }
+    }, 1000);
     renderQuestion(currentindex)
+
 }
 
 var questions = [{
