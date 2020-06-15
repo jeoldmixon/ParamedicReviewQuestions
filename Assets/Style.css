@@ -1,6 +1,14 @@
-.EMS {
-    background-image: url("../Assets/EMSLogo.jpg");
-    background-size: 100%;
+body {
+    background-image: url('./EMSLogo.jpg');
     background-repeat: no-repeat;
+    background-attachment: fixed;
     background-position: center;
+    background-size: 25%;
+}
+
+#AnswerA,
+#AnswerB,
+#AnswerC,
+#AnswerD {
+    color: blue;
 }

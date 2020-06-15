@@ -1,7 +1,3 @@
-// var sheet = document.createElement('style')
-// sheet.innerHTML = ".button{background-color:green; padding 15px 32px; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 4px; cursor: pointer;"
-// }
-
 main()
 
 function main() {
@@ -14,6 +10,7 @@ function main() {
     <h1>Paramedic Quiz</h1>
     <h2>Try the following questions to review your paramedic knowledge...</h2>
     <h3>Answering the question right adds time-- Get it wrong and time is subtracted...</h3>
+    <h4>Try not to kill the patient<h/4>
     <button onclick="startGame();" id="startButton">Start</button>
     `;
 }
@@ -40,10 +37,13 @@ function renderQuestion(index) {
         console.log(selectedAnswer)
         if (questions[index].correct == "A") {
             timeLeft++
+            window.alert("Correct!")
             renderQuestion(index + 1)
         } else {
             timeLeft--
+            window.alert("WRONG! You just killed your patient!")
             renderQuestion(index + 1)
+
 
         }
     })
@@ -53,9 +53,11 @@ function renderQuestion(index) {
         console.log(selectedAnswer)
         if (questions[index].correct == "B") {
             timeLeft++
+            window.alert("Correct!")
             renderQuestion(index + 1)
         } else {
             timeLeft--
+            window.alert("WRONG! You just killed your patient!")
             renderQuestion(index + 1)
 
         }
@@ -66,9 +68,11 @@ function renderQuestion(index) {
         console.log(selectedAnswer)
         if (questions[index].correct == "C") {
             timeLeft++
+            window.alert("Correct!")
             renderQuestion(index + 1)
         } else {
             timeLeft--
+            window.alert("WRONG! You just killed your patient!")
             renderQuestion(index + 1)
 
         }
@@ -79,9 +83,11 @@ function renderQuestion(index) {
         console.log(selectedAnswer)
         if (questions[index].correct == "D") {
             timeLeft++
+            window.alert("Correct!")
             renderQuestion(index + 1)
         } else {
             timeLeft--
+            window.alert("WRONG! You just killed your patient!")
             renderQuestion(index + 1)
 
         }
