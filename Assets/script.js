@@ -2,12 +2,7 @@ main()
 
 function main() {
     var pageContentEl = document.getElementById("wrapper");
-    pageContentEl.innerHTML = `<header><a href="./Assets/ViewHighScore.html">View High Score</a>
-    <div class=headtimer>
-    Timer:
-        </div>
-    </header>
-    <h1>Paramedic Quiz</h1>
+    pageContentEl.innerHTML = `<h1>Paramedic Quiz</h1>
     <h2>Try the following questions to review your paramedic knowledge...</h2>
     <h3>Answering the question right adds time-- Get it wrong and time is subtracted...</h3>
     <h4>Try not to kill the patient<h/4>
@@ -16,13 +11,14 @@ function main() {
 }
 
 var timeLeft = 20
-
+var timerInterval;
 var pageElement = document.querySelector("#wrapper")
+var index = 0;
 
-function renderQuestion(index) {
+function renderQuestion() {
 
 
-    pageElement.innerHTML = "<header><a href=\"./assests/ViewHighScore.html\">View High Scores</a></header>\
+    pageElement.innerHTML = "\
     <h1 id=\"questionText\">" + questions[index].question + "</h1>\
     <button id=\"AnswerA\">" + questions[index].choiceA + "</button><br> \
     <button id=\"AnswerB\">" + questions[index].choiceB + "</button><br> \
@@ -38,11 +34,26 @@ function renderQuestion(index) {
         if (questions[index].correct == "A") {
             timeLeft++
             window.alert("Correct!")
-            renderQuestion(index + 1)
+
+            if (timeLeft <= 0 || index === questions.length - 1) {
+                clearInterval(timerInterval);
+                return
+
+            } else {
+                index += 1
+                renderQuestion()
+            }
         } else {
             timeLeft--
             window.alert("WRONG! You just killed your patient!")
-            renderQuestion(index + 1)
+            if (timeLeft <= 0 || index === questions.length - 1) {
+                clearInterval(timerInterval);
+                return
+
+            } else {
+                index += 1
+                renderQuestion()
+            }
 
 
         }
@@ -54,11 +65,25 @@ function renderQuestion(index) {
         if (questions[index].correct == "B") {
             timeLeft++
             window.alert("Correct!")
-            renderQuestion(index + 1)
+            if (timeLeft <= 0 || index === questions.length - 1) {
+                clearInterval(timerInterval);
+                return
+
+            } else {
+                index += 1
+                renderQuestion()
+            }
         } else {
             timeLeft--
             window.alert("WRONG! You just killed your patient!")
-            renderQuestion(index + 1)
+            if (timeLeft <= 0 || index === questions.length - 1) {
+                clearInterval(timerInterval);
+                return
+
+            } else {
+                index += 1
+                renderQuestion()
+            }
 
         }
     })
@@ -69,11 +94,25 @@ function renderQuestion(index) {
         if (questions[index].correct == "C") {
             timeLeft++
             window.alert("Correct!")
-            renderQuestion(index + 1)
+            if (timeLeft <= 0 || index === questions.length - 1) {
+                clearInterval(timerInterval);
+                return
+
+            } else {
+                index += 1
+                renderQuestion()
+            }
         } else {
             timeLeft--
             window.alert("WRONG! You just killed your patient!")
-            renderQuestion(index + 1)
+            if (timeLeft <= 0 || index === questions.length - 1) {
+                clearInterval(timerInterval);
+                return
+
+            } else {
+                index += 1
+                renderQuestion()
+            }
 
         }
     })
@@ -84,36 +123,52 @@ function renderQuestion(index) {
         if (questions[index].correct == "D") {
             timeLeft++
             window.alert("Correct!")
-            renderQuestion(index + 1)
+            if (timeLeft <= 0 || index === questions.length - 1) {
+                clearInterval(timerInterval);
+                return
+
+            } else {
+                index += 1
+                renderQuestion()
+            }
+
         } else {
             timeLeft--
             window.alert("WRONG! You just killed your patient!")
-            renderQuestion(index + 1)
+            if (timeLeft <= 0 || index === questions.length - 1) {
+                clearInterval(timerInterval);
+                return
+
+            } else {
+                index += 1
+                renderQuestion()
+            }
+
 
         }
+
     })
 
 }
 
 function startGame() {
-    var currentindex = 0
-        // var selectedAnswer = ""
-        // if there are no more questions- display you got ___ out of questions.length right... 
+
+    // var selectedAnswer = ""
+    // if there are no more questions- display you got ___ out of questions.length right... 
 
     var timerEl = document.querySelector("#timertext");
 
-    var timerInterval = setInterval(function() {
+    timerInterval = setInterval(function() {
         timeLeft--;
         timerEl.textContent = timeLeft + " seconds remaining";
 
-        if (timeLeft <= 0) {
-            clearInterval(timerInterval);
-            pageElement.innerHTML = "<header><a href=\"./assests/ViewHighScore.html\">View High Scores</a></header>"
-            return
 
-        }
     }, 1000);
-    renderQuestion(currentindex)
+    renderQuestion()
+
+}
+
+function endgame() {
 
 }
 
